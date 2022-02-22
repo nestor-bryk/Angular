@@ -1,0 +1,11 @@
+<div [class]="'container'">
+    <h1>Plan your day!</h1>
+    <h1>User: Nestor Bryk. Count of task {{ count }}</h1>
+    <hr>
+    <div [class]="'panel__add--task'">
+        <input [class]="'input__task--name'" type="text" [(ngModel)]="inputText">
+        <button [class]="'btn__add--task'" (click)="addTask()">Add</button>
+    </div>
+    <hr>
+    <app-child [arrTasks]="addTasks" (countTasks)="getCountTask($event)"></app-child>
+</div>

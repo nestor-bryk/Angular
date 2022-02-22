@@ -1,0 +1,34 @@
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Task</th>
+            <th>Check</th>
+            <th>DONE/IN PROGRESS</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let task of arrTasks; let i = index">
+            <tr>
+                <td [textContent]="i + 1"></td>
+                <td [textContent]="arrTasks[i].name"></td>
+                <td><input class="checkbox" type="checkbox" (click)="checking(i)"></td>
+                <td [textContent]="statusTask(i)" [style.color]="isColor(i)"></td>
+                <td><button class="btn__edit" (click)="editTask(i)">Edit</button></td>
+                <td><button class="btn__delete" [disabled]="activeButton(i)" (click)="deleteTask(i)">Delete</button></td>
+            </tr>
+        </ng-container>
+        <ng-container *ngIf="editPanel">
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Write new name : </td>
+                <td><input class="input__edit" type="text" [(ngModel)]="inputEdit"></td>
+                <td><button class="btn__save" (click)="saveEdit()">Save</button></td>
+            </tr>
+        </ng-container>
+        
+    </tbody>
+</table>
